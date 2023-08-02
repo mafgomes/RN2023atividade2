@@ -1,8 +1,8 @@
-# Atividade 1 - React Native I
-Cláudio Aparecido de Oliveira Matos • 12 de jul. (editado: 18 de jul.)
+# Atividade 2 - React Native I
+Cláudio Aparecido de Oliveira Matos • 26 de jul. 7 pontos
 
 ## Enunciado
-ada aluno deverá desenvolver um aplicativo React Native que faz consumo de API’s do Github.
+Cada aluno deverá desenvolver um aplicativo React Native que faz consumo de API’s do Github.
 
 O APP deverá conter três telas:
 Login
