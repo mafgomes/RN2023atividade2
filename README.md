@@ -27,4 +27,4 @@ A entrega deverá ser feita através do link do trabalho no Github.
 
 ## Data de entrega
 
-05 de agosto.
+07 de agosto.
