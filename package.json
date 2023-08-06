@@ -1,7 +1,7 @@
 {
   "name": "RN2023atividade2",
   "version": "0.0.1",
-  "private": true,
+  "private": false,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -32,5 +32,10 @@
   },
   "engines": {
     "node": ">=16"
-  }
+  },
+  "description": "Github repo lister",
+  "main": "index.js",
+  "repository": "git@github.com:mafgomes/RN2023atividade2.git",
+  "author": "Marcelo A F Gomes <marcelo.a.gomes@iesb.edu.br>",
+  "license": "CC-BY-4.0"
 }
