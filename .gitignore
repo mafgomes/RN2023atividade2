@@ -1,3 +1,7 @@
+# Env files are assumed to contain password information
+token.env
+# *.env # but maybe not all of them
+
 # macOS
 #
 .DS_Store
