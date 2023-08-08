@@ -15,6 +15,7 @@ interface IUser {
   avatar_url: string;
   name: string;
   bio: string;
+  followers_url: string;
 }
 
 interface IOwner {
@@ -31,37 +32,36 @@ interface IData {
   language: string;
 }
 
-const Home = () => {
+const textDecorationLine = param => {
+  const gitHubApiToken = '[GITHUB TOKEN]';
   const [user, setUser] = useState<IUser>();
   const [listRpos, setListRepos] = useState<IData[]>([]);
-  //   const [isLoading, setIsLoading] = useState<Boolean>(true);
 
   const URL = 'https://api.github.com';
   useEffect(() => {
     fetch(`${URL}/user`, {
       method: 'GET',
       headers: {
-        Authorization: 'Bearer [GitHub key]',
+        Authorization: `Bearer ${gitHubApiToken}`,
       },
     })
       .then(response => response.json())
       .then(json => {
-        // console.log(`RESPOSTA: ${JSON.stringify(json)}`);
         setUser(json);
       })
       .catch(e => {
         console.log(`Erro: ${e}`);
       })
       .finally(() => {
-        // setIsLoading(false);
+        // Tem algo pra ser feito aqui?
       });
   });
 
   useEffect(() => {
-    fetch(`${URL}/users/matos-claudio/repos`, {
+    fetch(`${URL}/users/mafgomes/repos`, {
       method: 'GET',
       headers: {
-        Authorization: 'Bearer [GitHub key]',
+        Authorization: `Bearer ${gitHubApiToken}`,
       },
     })
       .then(response => response.json())
@@ -69,17 +69,19 @@ const Home = () => {
         console.log(`REPOSITORIOS: ${JSON.stringify(json)}`);
         setListRepos(json);
       });
-  }, []);
+  }, [gitHubApiToken]);
 
   return (
-    <SafeAreaView style={{flex: 1, marginTop: StatusBar.currentHeight || 0}}>
+    <SafeAreaView style={styles.safeArea}>
       <View style={styles.imageView}>
         <Image source={{uri: user?.avatar_url}} style={styles.image} />
-        <Text style={{fontSize: 24}}>{user?.name}</Text>
-        <Text style={{fontSize: 18, fontWeight: 'bold'}}>{user?.bio}</Text>
+        <Text style={styles.titulo}>Tipo: '{typeof param}'</Text>
+        <Text style={styles.titulo}>{user?.name}</Text>
+        <Text style={styles.grande}>{user?.bio}</Text>
       </View>
-      <View style={{padding: 8}}>
-        <Text style={{fontWeight: 'bold', fontSize: 16}}>Repositórios</Text>
+      <View style={styles.praDentro}>
+        <Text style={styles.medio}>Repositórios</Text>
+        <Text style={styles.pequeno}>Token: '{gitHubApiToken}'</Text>
       </View>
       <FlatList
         data={listRpos}
@@ -105,11 +107,20 @@ const Home = () => {
   );
 };
 
+export default Home;
+
 const styles = StyleSheet.create({
+  safeArea: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
   imageView: {
     alignItems: 'center',
     backgroundColor: '#FFF',
     padding: 8,
+  },
+  praDentro: {
+    padding: 8
   },
   image: {
     width: 120,
@@ -119,6 +130,18 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     alignSelf: 'center',
   },
+  titulo: {
+    fontSize: 24,
+  },
+  grande: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  medio: {
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  pequeno: {
+    fontSize: 12,
+  },
 });
-
-export default Home;

@@ -9,7 +9,7 @@ import About from '../screens/about';
 // Objeto com as telas do Stack
 type RootStackParamList = {
   Login: undefined;
-  Home: undefined | {token: string};
+  Home: string;
   Detail: undefined;
   About: undefined;
 };
@@ -37,7 +37,6 @@ const Routes = () => {
         <Stack.Screen
           name="Home"
           component={Home}
-          initialParams={{token: ''}}
           options={{
             title: 'Listagem de projetos',
           }}

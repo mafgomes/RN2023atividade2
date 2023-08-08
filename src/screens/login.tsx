@@ -22,7 +22,8 @@ const Login = () => {
 
   const login = () => {
     // GetSetGitHubApiToken(tokenValue.toString());
-    navigate('Home', {token: tokenValue.toString()});
+    const tkn = tokenValue.toString();
+    navigate({'Home', tkn});
   };
 
   const forgetMyPassword = () => {
@@ -41,9 +42,9 @@ const Login = () => {
           keyboardType="email-address"
           maxLength={25}
         />
-        <Text>User: '{user}'</Text>
+        {/* <Text>User: '{user}'</Text>
         <Text>Senha: '{password}'</Text>
-        <Text>Token: '{tokenValue}'</Text>
+        <Text>Token: '{tokenValue}'</Text> */}
         <TextInput
           style={styles.textInput}
           placeholder="Senha"
