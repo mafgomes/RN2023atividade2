@@ -32,8 +32,8 @@ interface IData {
   language: string;
 }
 
-const textDecorationLine = param => {
-  const gitHubApiToken = '[GITHUB TOKEN]';
+const Detail = ({key: _nome, params: param}) => {
+  const gitHubApiToken = param;
   const [user, setUser] = useState<IUser>();
   const [listRpos, setListRepos] = useState<IData[]>([]);
 
@@ -107,7 +107,7 @@ const textDecorationLine = param => {
   );
 };
 
-export default Home;
+export default Detail;
 
 const styles = StyleSheet.create({
   safeArea: {

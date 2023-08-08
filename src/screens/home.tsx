@@ -12,6 +12,8 @@ import {
   View,
 } from 'react-native';
 
+import {useNavigation} from '@react-navigation/native';
+
 interface IUser {
   avatar_url: string;
   name: string;
@@ -32,13 +34,20 @@ interface IData {
   language: string;
 }
 
-const Home = param => {
-  const gitHubApiToken = '[GITHUB TOKEN]';
+const Home = (_route: 'Home', param: string) => {
+  const {navigate} = useNavigation();
+  const gitHubApiToken = param;
+  // const gitHubApiToken = '[GITHUB TOKEN]';
   // const gitHubApiToken = GetSetGitHubApiToken(null);
   const [user, setUser] = useState<IUser>();
   const [listRpos, setListRepos] = useState<IData[]>([]);
 
   const URL = 'https://api.github.com';
+
+  function goDetail() {
+    navigate("Detail", {token: gitHubApiToken});
+  }
+
   useEffect(() => {
     fetch(`${URL}/user`, {
       method: 'GET',
@@ -87,7 +96,7 @@ const Home = param => {
       <FlatList
         data={listRpos}
         renderItem={({item, index}) => (
-          <TouchableOpacity>
+          <TouchableOpacity onPress={goDetail}>
             <View
               key={index}
               style={{backgroundColor: '#FFF', marginTop: 8, padding: 8}}>

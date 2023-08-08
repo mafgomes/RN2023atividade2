@@ -9,8 +9,8 @@ import About from '../screens/about';
 // Objeto com as telas do Stack
 type RootStackParamList = {
   Login: undefined;
-  Home: string;
-  Detail: undefined;
+  Home: string | undefined;
+  Detail: string | undefined;
   About: undefined;
 };
 
