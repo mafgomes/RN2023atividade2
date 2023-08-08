@@ -23,7 +23,7 @@ const Login = () => {
   const login = () => {
     // GetSetGitHubApiToken(tokenValue.toString());
     const tkn = tokenValue.toString();
-    navigate('Home', tkn);
+    navigate({route: 'Home', params: tkn});
   };
 
   const forgetMyPassword = () => {

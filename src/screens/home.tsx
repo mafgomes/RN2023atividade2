@@ -34,7 +34,7 @@ interface IData {
   language: string;
 }
 
-const Home = (_route: 'Home', param: string) => {
+const Home = ({route: _rota, params: param}) => {
   const {navigate} = useNavigation();
   const gitHubApiToken = param;
   // const gitHubApiToken = '[GITHUB TOKEN]';
